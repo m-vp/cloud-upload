@@ -27,9 +27,9 @@ class User(db.Model):
     password = db.Column(db.String(120), nullable=False)
 
 # Initialize Database
-@app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
+
 
 # Register Route
 @app.route("/register", methods=["POST"])
